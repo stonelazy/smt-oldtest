@@ -706,8 +706,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
 
     var index = $items.index($items.filter(':focus'));
 
-    if (e.keyCode == 38 && index > 0)                 index--;;                        // up
-    if (e.keyCode == 40 && index < $items.length - 1) index++;;                        // down
+    if (e.keyCode == 38 && index > 0)                 index--;;;                        // up
+    if (e.keyCode == 40 && index < $items.length - 1) index++;;;                        // down
     if (!~index)                                      index = 0;
 
     $items.eq(index).focus()
@@ -941,7 +941,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
           : this.hide.call(this)
       }, this));
 
-      if (doAnimate) this.$backdrop[0].offsetWidth;; // force reflow
+      if (doAnimate) this.$backdrop[0].offsetWidth;;; // force reflow
 
       this.$backdrop.addClass('in');
 

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data-dictionary name="ShareMyTicket">
+
+	<table name="Sell">
+		<columns>
+			<column name="SELLPNR_ID">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="PNR_FROM_STZ">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="PNR_TO_STZ">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="PASSENGER_EXTRA">
+				<data-type>INTEGER</data-type>
+			</column>
+		</columns>
+		<foriegn name="key train id"></foriegn>
+	</table>
+
+
+
+	<table name="Train">
+		<columns>
+			<column name="Train_ID">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="Name">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="FROM_CODE">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="TO_CODE">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="START_TIME">
+				<data-type>BIGINT</data-type>
+				<nullable>true</nullable>
+			</column>
+		</columns>
+	</table>
+	
+	<table name="Users">
+		<columns>
+			<column name="UID">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="NAME">
+				<data-type>VARCHAR</data-type>
+				<max-len >255</max-len>
+				<nullable>false</nullable>
+			</column>
+			<column name="SEX">
+				<data-type>INTEGER</data-type>
+				<max-len >2</max-len>
+				<nullable>false</nullable>
+			</column>
+			<column name="AGE">
+				<data-type>VARCHAR</data-type>
+				<max-len >255</max-len>
+				<nullable>false</nullable>
+			</column>
+			<column name="EMAIL">
+				<data-type>VARCHAR</data-type>
+				<max-len >255</max-len>
+				<nullable>false</nullable>
+			</column>
+			<column name="MOBILE">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="PASSWORD">
+				<data-type>VARCHAR</data-type>
+				<nullable>false</nullable>
+			</column>
+			<column name="COOKIE">
+				<data-type>UUID</data-type>
+				<nullable>false</nullable>
+				
+			</column>
+		</columns>
+	</table>
+	
+</data-dictionary>
+
+
+<!-- 
+
+\c sharedb;
+CREATE SCHEMA IF NOT EXISTS share;
+set search_path to share;
+CREATE EXTENSION pgcrypto;
+create extension citext;
+
+CREATE TABLE Users(
+	USERS_ID BIGSERIAL PRIMARY KEY,
+	NAME character(252),
+	EMAIL character(252),
+	MOBILE BIGINT,
+	SEX smallint,
+	IS_MALE boolean,
+	COOKIE UUID DEFAULT gen_random_uuid(),
+	PASSWORD bytea
+);
+alter sequence users_users_id_seq start 12000 cache 100;
+
+CREATE TABLE Sell(
+	PNR_NUMBER BIGINT PRIMARY KEY,
+	TRAIN_NUMBER BIGINT,
+	FROM_STZ character(4),
+	TO_STZ character(4),
+	DOJ BIGINT,
+	EXTRA_PASSENGER smallint DEFAULT 0,
+	USERS_ID BIGINT
+);
+
+CREATE TABLE Train(
+	Train_ID BIGINT PRIMARY KEY,
+	Name character(60),
+	FROM_CODE character(4),
+	TO_CODE character(4), 
+	START_TIME BIGINT
+);
+
+
+CREATE SEQUENCE serial1 START 101;
+
+
+Queries
+CREATE SCHEMA IF NOT EXISTS snw;  
+CREATE TABLE contacts(  
+   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+   name TEXT,
+   email TEXT
+);
+
+sharedb=# CREATE EXTENSION pgcrypto;
+CREATE EXTENSION
+sharedb=# SELECT gen_random_uuid(); 
+           gen_random_uuid            
+
+ ca8e7257-97d4-4f14-90a5-a221c8ba2dd8
+
+
+ -->

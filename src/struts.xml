@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="default" extends="struts-default" namespace="/">
+
+        <interceptors>
+            <interceptor-stack name="defaultShareStack">
+                <interceptor-ref name="defaultStack">
+                    <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,csrf</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="defaultShareStack" />
+
+        <action name="getAccounts" class="com.share.client.action.AccountAction"
+                method="getAcccountDetails">
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="getTutorial" class="com.server.test.StrutsTest">
+            <result name="success">/jsp/Error.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="irctc" class="com.share.client.action.IRCTCAction">
+            <result name="view">/jsp/IRCTCHome.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="viewPnr" class="com.share.client.action.IRCTCAction">
+            <result name="view">/jsp/ViewPNR.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="authInfo" class="com.share.client.action.AccountsAction">
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="ember" class="com.server.test.EmberTest">
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="auth" extends="struts-default" namespace="/auth">
+
+        <interceptors>
+            <interceptor-stack name="defaultShareStack1">
+                <interceptor-ref name="defaultStack">
+                    <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,csrf</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="defaultShareStack1" />
+
+        <action name="sellPnr" class="com.share.client.action.IRCTCAction">
+            <result name="view">/jsp/SellPNR.jsp</result>
+            <result name="pickseats">/jsp/PickSeats.jsp</result>
+            <result name="confirmOrder">/jsp/ConfirmOrder.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="notifyInfo" class="com.share.client.action.AccountsAction" method="getNotifyInfo" >
+            <result name="view">/jsp/ViewNotifyInfo.jsp</result>
+            <result name="pickseats">/jsp/PickSeats.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="buyPnr" class="com.share.client.action.IRCTCAction">
+            <result name="view">/jsp/BuyPNR.jsp</result>
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+
+    </package>
+
+    <package name="optauth" extends="struts-default" namespace="/optauth">
+
+        <interceptors>
+            <interceptor-stack name="defaultShareStack2">
+                <interceptor-ref name="defaultStack">
+                    <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,csrf</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="defaultShareStack2" />
+
+        <action name="feedbackmessage" class="com.share.client.action.ShareAction" method="feedback" >
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+        <action name="entertainment" class="com.share.client.action.EntertainmentAction">
+            <result name="error">/jsp/Error.jsp</result>
+        </action>
+
+
+
+    </package>
+</struts>

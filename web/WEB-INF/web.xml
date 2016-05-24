@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <display-name>share</display-name>
+    <welcome-file-list>
+        <welcome-file>/html/index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>AppStartup</servlet-name>
+        <servlet-class>com.share.services.ShareStartup</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.share.filters.LoginFilter</filter-class>
+        <init-param>
+            <param-name>skip</param-name>
+            <param-value>/favicon.ico|</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.share.filters.AuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>skip</param-name>
+            <param-value>/favicon.ico|/setLoginInfo.action|</param-value>
+        </init-param>
+        <init-param>
+            <param-name>optional</param-name>
+            <param-value>/[a-zA-Z]{0,30}/optauth/[\\W\\w]*</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/setLoginInfo.action</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/login.action</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/auth/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/optauth/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+</web-app>

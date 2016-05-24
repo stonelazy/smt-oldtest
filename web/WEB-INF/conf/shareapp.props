@@ -1,0 +1,9 @@
+app.home=/Users/sudharsan-2598/Documents/workspace/share/
+RAILWAY_API_KEY=rfrbi5726
+postgres.host=localhost
+postgres.port=3661
+redis.host=localhost
+redis.port=6379
+use.redis=true
+AUTH_COOKIE_NAME=share_cookie
+IS_NEW_SIGNUP_ALLOWED=true

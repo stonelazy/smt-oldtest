@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+
+<!-- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script> TODO-->
+
+<body>
+<!-- Navigation -->
+<div id="mainTopBar">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#home" class="navbar-brand" >Share My Ticket </a>
+            </div>
+            <!-- Collect the nav links for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" onclick="window.location.reload()">HOME</a>
+                    </li>
+                    <li class="dropdown">
+                        <!--onclick="showDiv(services)"-->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">SERVICES</a>
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+                        <ul class="dropdown-menu">
+                            <li><a  id="travelHome" onclick="mainServices(event)">IRCTC</a></li>
+                            <li><a  id="entertainmentHome" onclick="mainServices(event)">Movie Tickets</a></li>
+
+
+                            <!--<li><a href="#">Something else here</a></li>-->
+                            <!--<li role="separator" class="divider"></li>-->
+                            <!--<li><a href="#">Separated link</a></li>-->
+                            <!--<li role="separator" class="divider"></li>-->
+                            <!--<li><a href="#">One more separated link</a></li>-->
+                        </ul>
+                    </li>
+                    <li><a href="#about">ABOUT</a>
+                    </li>
+                    <!-- 	                    <li><a href="#free-text">FREE TEXT</a> -->
+                    <!-- 	                    </li> -->
+                    <li><a href="#contact">CONTACT</a>
+                    </li>
+                    <!--<li><a href="#signInButton" id="signInButton" onclick="mainServices(event)">SIGN IN</a>-->
+                    <!--</li>-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#signInButton" id="signInButton" onclick="mainServices(event)"><span
+                                class="glyphicon glyphicon-user"></span>Sign In</a></li>
+                        <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+                        <li><a style="display: none;" href="#settingsPage" id="settingsButton"
+                               onclick="mainServices(event)">SETTINGS</a></li>
+                    </ul>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</div>
+<!--End Navigation -->
+
+<section class="for-full-back  color-light" id="signInDiv" style="display: none; ">
+
+    <a class="navbar-brand" id="travelHome" href="http://localhost:8080/share">
+        Share My Ticket </a>
+
+    <div class="col-md-3 col-sm-3" style="float: right;">
+        <div class="form-group">
+            <button onclick="goHome()" type="submit" class="btn btn-default">
+                Skip
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 onclick="goHome()">Share My Ticket </h1>
+                <h4>
+                    <strong>Booked a wrong ticket ?
+                        No worries, you can now share them to a right person </strong>
+                </h4>
+            </div>
+
+        </div>
+        <div class="row text-center space-pad">
+            <div class="col-md-4 ">
+
+            </div>
+
+            <div class="row container col-md-7">
+                <div>
+                    <h2 align="center"></h2>
+
+                    <!-- 						<form> -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" id="emailAddress" class="form-control" required="required"
+                                       autocomplete="on" autofocus="autofocus"
+                                       placeholder="Email Address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="password" id="password" class="form-control" autocomplete="on"
+                                       placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <button id="submit" onclick="return comeInSubmit(emailAddress,password);"
+                                        class="btn btn-default btn-primary "> I'm in
+                                </button>
+                                <!-- 										 onclick="comeInSubmit(emailAddress,password)"   required="required"-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group" id="comeInResult">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 						</form> -->
+                </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        </div>
+    </div>
+</section>
+
+<div class="container" id="mainContainer">
+
+    <!--Header section  -->
+    <div class="container" id="home">
+        <div class="row text-center ">
+            <div class="col-md-3 head-main ">
+                <i class="fa fa-bell color-blue "></i>
+                <h3>
+                    <a href="#home">HOME</a>
+                </h3>
+
+            </div>
+            <div class="col-md-3 head-main">
+
+                <i class="fa fa-globe color-blue "></i>
+                <h3>
+                    <a href="#services">SERVICES</a>
+                </h3>
+
+            </div>
+            <div class="col-md-3 head-main">
+
+                <i class="fa fa-edit color-blue "></i>
+                <h3>
+                    <a href="#about">ABOUT</a>
+                </h3>
+
+            </div>
+            <div class="col-md-3 head-main">
+                <i class="fa fa-headphones color-blue"></i>
+                <h3>
+                    <a href="#contact">CONTACT</a>
+                </h3>
+
+            </div>
+        </div>
+    </div>
+    <!--End Header section  -->
+
+    <!-- Services Section-->
+    <section class="for-full-back color-white" id="services">
+        <div class="container">
+
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>OUR SERVICES</h1>
+                    <h4>
+                        <strong> We just help you share your tickets </strong>
+                    </h4>
+                </div>
+
+            </div>
+
+            <div class="row  space-pad">
+                <div class="col-md-3 ">
+
+                    <div class="about-div text-center ">
+
+                        <i class="fa fa-credit-card fa-4x color-blue"></i>
+
+
+                        <h3>What We Do ?</h3>
+                        <p>A Platform to share your tickets</p>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 ">
+                    <p class="text-center">Our service was designed to provide a
+                        common platform for sharing the tickets, any damn tickets that
+                        are non-refundable. So, all those guys who won't refund the money
+                        on your ticket cancellation, screw em.. you can share your
+                        tickets here, find a suitable buyer for your ticket :) Initially
+                        we have our website developed only for sharing IRCTC Train
+                        tickets but have plans for many more.
+                    </p>
+
+                    <p>
+                        <a href="#" class="btn btn-default" id="travelHome" onclick="mainServices(event)">Travel </a>
+                        <a href="#" class="btn btn-default" id="entertainmentHome"
+                           onclick="mainServices(event)">Cinema </a>
+                        <a href="#contact" class="btn btn-default">What else do u want ? </a>
+                    </p>
+
+                    <p>There are no payment options available with us, you will
+                        directly have to coordinate with your Seller (if you are a buyer
+                        and viz-a-viz) Incase if someone cheats you, we can't take any
+                        responsibilities.. the least we could do is block his account
+                        from our end. So its your
+                        responsibility to be precautious with your moves.
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 ">
+
+                    <div class="about-div text-center">
+                        <i class="fa fa-envelope-o fa-4x color-blue"></i>
+                        <h3>What's the buzz ?</h3>
+
+                        <p>
+                            We just don't want you to lose your money and share stuff with others who need it so badly
+                            than you do !!
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--End Services Section-->
+
+
+    <!--     About Section -->
+    <section class="for-full-back color-light " id="about">
+        <div class="container">
+
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>ABOUT COMPANY</h1>
+                    <h4>
+                        <strong>
+                            This really isn't a company, just a bored developer :P
+                        </strong>
+                    </h4>
+                </div>
+
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h2>What is this site all about ?</h2>
+                    <p>
+                        The odds are very low that you have a ticket and you can't use it because you got other plans,
+                        but when it does
+                        you could have gone way past the time you are allowed to cancel your tickets..
+                        Life is often so unpredictable anything might happen at any time and you could be forced to take
+                        that journey you weren't planning for and guess what ? Forget Train availability, you can't even
+                        find at Redbus..
+                        Stats predict that there is definitely going to be someone else out there who wants to cancel
+                        the exact same journey you are dying to get
+                        the ticket for. Both of you would have the crisis solved only if you got a common platform to
+                        share this info and thats what we do :)
+                    </p>
+                </div>
+
+            </div>
+            <!--             <div class="row text-center space-pad"> -->
+            <!--                 <div class="col-md-3 "> -->
+
+            <!--                     <div class="about-div"> -->
+
+            <!--                         <i class="fa fa-camera fa-4x color-blue"></i> -->
+
+
+            <!--                         <h3>30+ Clients </h3> -->
+
+
+            <!--                     </div> -->
+
+            <!--                 </div> -->
+            <!--                 <div class="col-md-3 "> -->
+
+            <!--                     <div class="about-div"> -->
+
+            <!--                         <i class="fa fa-briefcase fa-4x color-blue"></i> -->
+
+
+            <!--                         <h3>90+ Projects  </h3> -->
+
+
+            <!--                     </div> -->
+
+            <!--                 </div> -->
+            <!--                 <div class="col-md-3 "> -->
+
+            <!--                     <div class="about-div"> -->
+
+            <!--                         <i class="fa fa-desktop fa-4x color-blue"></i> -->
+
+
+            <!--                         <h3>40+ Offices </h3> -->
+
+
+            <!--                     </div> -->
+
+            <!--                 </div> -->
+            <!--                 <div class="col-md-3 "> -->
+
+            <!--                     <div class="about-div"> -->
+
+            <!--                         <i class="fa fa-folder fa-4x color-blue"></i> -->
+
+
+            <!--                         <h3>10+ Countries </h3> -->
+
+
+            <!--                     </div> -->
+
+            <!--                 </div> -->
+            <!--             </div> -->
+        </div>
+    </section>
+
+    <!--End About Section-->
+
+    <!-- Free Section -->
+
+    <section class="for-full-back color-light " id="free-text">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>FREE TEXT SECTION</h1>
+                    <h4>
+                        <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.
+                        </strong>
+                    </h4>
+                </div>
+
+            </div>
+            <div class="row text-center space-pad">
+                <div class="col-md-4 ">
+
+                    <div class="free-div">
+                        <h3># GO LIVE TEXT</h3>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+
+                    <div class="free-div">
+                        <h3># GO LIVE TEXT</h3>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 ">
+
+                    <div class="free-div">
+                        <h3># GO LIVE TEXT</h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--End Free Section -->
+
+    <!-- Contact Section -->
+    <section class="for-full-back color-white " id="contact">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>ALIVE CONTACT</h1>
+                    <h4>
+                        <strong>
+                            Contact us for anything, Would love to hear what you got to say.
+                        </strong>
+                    </h4>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 contact-cls">
+                    <h3>OUR LOCATION </h3>
+                    <div>
+                        <span><i class="fa fa-home"></i>&nbsp; Address: Chennai, Ramapuram</span>
+                        <br/>
+                        <!--                         <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span> -->
+                        <!--                         <br /> -->
+                        <span><i class="fa fa-envelope-o"></i>&nbsp;E-Mail: support@sharemyticket.in</span>
+                        <br/>
+                        <!--                         <span><i class="fa fa-phone"></i>&nbsp;Call: +50-987-009-0</span> -->
+                        <!--                         <br /> -->
+                        <span><i class="fa fa-globe"></i>&nbsp;Web: sharemyticket.in</span>
+                        <br/> <br/>
+                        <!--                         <button type="submit" class="btn btn-primary">Requestb Quotation</button> -->
+                    </div>
+
+                </div>
+                <div class="col-md-7">
+                    <h3>Grievance ? New feature request ? Swear at us ? Wait no More</h3>
+                    <p>
+                        This website is just run by a single lonely developer who works at an IT firm which during the
+                        day drills the most out of him :P
+                        So it might take until a day to get your questions answered.
+                    </p>
+
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="userName" required="required"
+                                           placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="replyToEmail" required="required"
+                                           placeholder="Email address that we should reply to">
+                                </div>
+                            </div>
+                        </div>
+                        <!--                         <div class="row"> -->
+                        <!--                         	<div class="col-md-6 col-sm-6"> -->
+                        <!--                         		<div class="form-group"> -->
+                        <!-- 									<input name="screenshot" value="true" type="checkbox"> Do you want us to attach a screen shot ? -->
+                        <!-- 								</div> -->
+                        <!-- 							</div> -->
+                        <!--                         </div> -->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="feedBackMessage" required="required"
+                                              class="form-control" rows="3" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button onclick="return submitFeedBack(feedBackMessage)" class="btn btn-default">
+                                        Submit Request
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--End Contact Section -->
+</div>
+
+<!--footer Section -->
+<div class="for-full-back " id="footer">
+    2016 sharemyticket.in | All Rights Reserved
+
+</div>
+<!--End footer Section -->
+<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+<!-- CORE JQUERY  -->
+<script type="text/javascript" src="js/lib/jquery-2.2.2.js"></script>
+
+<script src="js/lib/jquery-1.10.2.js"></script>
+<!-- https://www.irctc.co.in/eticketing/javax.faces.resource/ajax-loader.gif.jsf?ln=images -->
+
+<!--  <script src="js/lib/jquery-ui.js"></script> -->
+<!-- BOOTSTRAP CORE SCRIPT   -->
+<script src="js/lib/bootstrap.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<!--     <script type="text/javascript" src="js/autobreadcrumb.js"></script> -->
+<script src="js/custom.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/lib/datepicker-jquery-ui.js"></script>
+<script type="text/javascript" src="js/lib/prefixfree-1.0.7.js"></script>
+<!--     <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script> -->
+
+
+<div id="overlay"
+     style="opacity: 0.2; z-index: 99; position: fixed; width: 100%; height: 1200px; top: -47px; left: 0px; display: none; background-color: rgb(0, 0, 0);"></div>
+<div id="ajaxLoading" style="color:white;z-index: 100;position: fixed; display: none; top:230px; left:650px"><h1>Loading
+    . . .</h1></div>
+
+</body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="a platform to share tickets">
+    <meta name="author" content="sudharsan">
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>Share your Ticket</title>
+    <!--REQUIRED STYLE SHEETS-->
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet"/>
+    <!-- CUSTOM STYLE CSS -->
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/breadcrumbs.css" rel="stylesheet"/>
+    <link href="css/datepicker-jquery-ui.css" rel="stylesheet"/>
+
+    <!-- GOOGLE FONT -->
+    <!--     <link href='http://fonts.googleapis.com/css?family=Ruluko' rel='stylesheet' type='text/css' /> TODO -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--     <link rel="icon" type="image/png" href="images/logo1.jpg"> -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+</html>
+<!--/Users/sudharsan-2598/Documents/workspace/apache-tomcat-7.0.67/wtpwebapps/share-workspace/WEB-INF/lib/slf4j-api-1.7.7.jar-->

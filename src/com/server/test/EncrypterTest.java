@@ -4,33 +4,28 @@
  */
 
 package com.server.test;
-import org.apache.commons.codec.binary.Base64;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.Charsets;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.MessageDigest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author sudharsan-2598
- *
  */
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.io.Charsets;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 class EncrypterTest
 {
 	private static Logger logger = Logger.getLogger(EncrypterTest.class.getName());
 	
 	Cipher ecipher;
-    static final ThreadLocal<MessageDigest> sha512 = new ThreadLocal();
+    static final ThreadLocal<MessageDigest> sha512 = new ThreadLocal<>();
     public static final char[] HEX = 
     new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 	static Cipher dcipher;

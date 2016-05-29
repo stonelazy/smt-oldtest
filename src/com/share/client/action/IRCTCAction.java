@@ -2,22 +2,6 @@
 
 package com.share.client.action;
 
-import java.io.IOException;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.server.constants.RegexConstants;
 import com.server.sql.QueryExecutor;
 import com.server.sql.QueryExecutorImpl;
@@ -41,6 +25,20 @@ import com.share.sql.query.TrainQuery;
 import com.share.sql.query.TrainQueryImpl;
 import com.share.util.AccountsUtil;
 import com.share.util.TrainUtil;
+import org.apache.struts2.ServletActionContext;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IRCTCAction
 {
@@ -340,50 +338,46 @@ public class IRCTCAction
 					CommonUtil.writeResponse(stationInfo);
 					result = StrutsConstants.NONE;
 				}
-				else if(getAction().equals(ActionConstants.SEARCH_TRAIN))
-				{
-					logger.info("gona start headache");
-					
+				else {
+					if (getAction().equals(ActionConstants.SEARCH_TRAIN)) {
+						logger.info("gona start headache");
+
 //					http://api.railwayapi.com/between/source/<station code>/dest/<station code>/date/dd-mm/apikey/<apikey>/
-					
-					API aa = new RailwayAPIImpl();
-					 
-					List<Train> trainList = aa.getTrainsBetween("TPJ", "MAS", "12-05-2013");
-					List<Long> trainNumber = new ArrayList<>();
-					
-					for(int i=trainList.size()-1;i>=0;i--)
-					{
-						logger.config("available trian number>> " + trainList.get(i).getTrainNumber());
-						trainNumber.add(trainList.get(i).getTrainNumber());
+
+						API aa = new RailwayAPIImpl();
+
+						List<Train> trainList = aa.getTrainsBetween("TPJ", "MAS", "12-05-2013");
+						List<Long> trainNumber = new ArrayList<>();
+
+						for (int i = trainList.size() - 1; i >= 0; i--) {
+							logger.config("available trian number>> " + trainList.get(i).getTrainNumber());
+							trainNumber.add(trainList.get(i).getTrainNumber());
+						}
+						logger.config("printlalaa of train list>> " + trainList);
+
+						logger.info("changed milllis");
+						Long millis = DateUtil.parseDateToMillis("12-05-2013");
+
+						if (!trainNumber.isEmpty()) {
+							Map<String, Object> criteriaMap = new HashMap<>();
+							criteriaMap.put(Sell.TRAIN_NUMBER, trainNumber);
+							criteriaMap.put(Sell.DOJ, new HashMap<String, Object>().put(SymbolConstants.LEFT_ANGULAR_BRACKET, millis + DateUtil.getDaysInMilis(2)));
+							criteriaMap.put(Sell.DOJ, new HashMap<String, Object>().put(SymbolConstants.RIGHT_ANGULAR_BRACKET, millis - DateUtil.getDaysInMilis(2)));
+
+							List<String> selectCols = new ArrayList<>();
+							selectCols.add(Sell.DOJ);
+							selectCols.add(Sell.SELL_ID);
+
+							String sql = SQLUtil.formSelectQuery(Sell.TABLE_NAME, selectCols, criteriaMap);
+							logger.info("trains avaialble with us sql>> " + sql);
+
+						}
+
+						logger.info("getafromastz>> " + getFromStz() + " tostz>> " + getToStz() + "  doj>> " + getDoj());
+					} else {
+						logger.info("no action matched");
+						result = StrutsConstants.VIEW;
 					}
-					logger.config("printlalaa of train list>> " + trainList);
-					
-					logger.info("changed milllis");
-					Long millis = DateUtil.parseDateToMillis("12-05-2013");
-					
-					if(!trainNumber.isEmpty())
-					{
-						Map<String,Object> criteriaMap = new HashMap<>();
-						criteriaMap.put(Sell.TRAIN_NUMBER,trainNumber);
-						criteriaMap.put(Sell.DOJ,new HashMap<String,Object>().put(SymbolConstants.LEFT_ANGULAR_BRACKET, millis + DateUtil.getDaysInMilis(2)));
-						criteriaMap.put(Sell.DOJ,new HashMap<String,Object>().put(SymbolConstants.RIGHT_ANGULAR_BRACKET, millis - DateUtil.getDaysInMilis(2)));
-						
-						List<String> selectCols = new ArrayList<>();
-						selectCols.add(Sell.DOJ);
-						selectCols.add(Sell.SELL_ID);
-						
-						String sql = SQLUtil.formSelectQuery(Sell.TABLE_NAME, selectCols, criteriaMap);
-						logger.info("trains avaialble with us sql>> "+  sql);
-						
-					}
-					
-					logger.info("getafromastz>> " + getFromStz() + " tostz>> " + getToStz() + "  doj>> " + getDoj());
-				}
-				
-				else
-				{
-					logger.info("no action matched");
-					result = StrutsConstants.VIEW;
 				}
 			}
 		} catch (Exception e)

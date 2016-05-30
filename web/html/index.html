@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]>
-<html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>
-<html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>
-<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
 <!--<![endif]-->
 
 
-<!-- <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script> TODO-->
+ <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
 
 <body>
 <!-- Navigation -->
 <div id="mainTopBar">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -24,22 +21,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#home" class="navbar-brand">Share My Ticket </a>
+                <a  href="#home" class="navbar-brand" id="travelHome" onclick="mainServices(event)">Share My Ticket </a>
             </div>
             <!-- Collect the nav links for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home" onclick="window.location.reload()">HOME</a>
+                    <li><a href="#home" onclick="window.location.reload()" >HOME</a>
                     </li>
-                    <li class="dropdown">
-                        <!--onclick="showDiv(services)"-->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">SERVICES</a>
-                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                        <ul class="dropdown-menu">
-                            <li><a id="travelHome" onclick="mainServices(event)">IRCTC</a></li>
-                            <li><a id="entertainmentHome" onclick="mainServices(event)">Movie Tickets</a></li>
-                        </ul>
+                    <li><a href="#services" onclick="showDiv(services)">SERVICES</a>
                     </li>
                     <li><a href="#about">ABOUT</a>
                     </li>
@@ -47,16 +36,10 @@
                     <!-- 	                    </li> -->
                     <li><a href="#contact">CONTACT</a>
                     </li>
-                    <!--<li><a href="#signInButton" id="signInButton" onclick="mainServices(event)">SIGN IN</a>-->
-                    <!--</li>-->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#signInButton" id="signInButton" onclick="mainServices(event)"><span
-                                class="glyphicon glyphicon-user"></span>Sign In</a></li>
-                        <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-                        <li><a style="display: none;" href="#settingsPage" id="settingsButton"
-                               onclick="mainServices(event)">SETTINGS</a></li>
-                    </ul>
-
+                    <li><a href="#signInButton" id="signInButton" onclick="mainServices(event)">SIGN IN</a>
+                    </li>
+                    <li><a style="display: none;" href="#settingsPage" id="settingsButton" onclick="mainServices(event)">SETTINGS</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -66,7 +49,7 @@
 </div>
 <!--End Navigation -->
 
-<section class="for-full-back  color-light" id="signInDiv" style="display: none; ">
+<section class="for-full-back  color-light" id="signInDiv" style="display: none; " >
 
     <a class="navbar-brand" id="travelHome" href="http://localhost:8080/share">
         Share My Ticket </a>
@@ -74,8 +57,7 @@
     <div class="col-md-3 col-sm-3" style="float: right;">
         <div class="form-group">
             <button onclick="goHome()" type="submit" class="btn btn-default">
-                Skip
-            </button>
+                Skip</button>
         </div>
     </div>
 
@@ -95,7 +77,7 @@
 
             </div>
 
-            <div class="row container col-md-7">
+            <div class="row container col-md-7"  >
                 <div>
                     <h2 align="center"></h2>
 
@@ -103,8 +85,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
-                                <input type="text" id="emailAddress" class="form-control" required="required"
-                                       autocomplete="on" autofocus="autofocus"
+                                <input type="text" id="emailAddress" class="form-control" required="required" autocomplete="on" autofocus="autofocus"
                                        placeholder="Email Address">
                             </div>
                         </div>
@@ -120,16 +101,14 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
-                                <button id="submit" onclick="return comeInSubmit(emailAddress,password);"
-                                        class="btn btn-default btn-primary "> I'm in
-                                </button>
+                                <button id="submit" onclick="return comeInSubmit(emailAddress,password);" class="btn btn-default btn-primary "> I'm  in</button>
                                 <!-- 										 onclick="comeInSubmit(emailAddress,password)"   required="required"-->
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <div class="form-group" id="comeInResult">
+                            <div class="form-group" id = "comeInResult">
 
                             </div>
                         </div>
@@ -210,8 +189,7 @@
 
                 </div>
                 <div class="col-md-6 ">
-                    <p class="text-center">
-                        Our service was designed to provide a
+                    <p class="text-center">Our service was designed to provide a
                         common platform for sharing the tickets, any damn tickets that
                         are non-refundable. So, all those guys who won't refund the money
                         on your ticket cancellation, screw em.. you can share your
@@ -222,8 +200,7 @@
 
                     <p>
                         <a href="#" class="btn btn-default" id="travelHome" onclick="mainServices(event)">Travel </a>
-                        <a href="#" class="btn btn-default" id="entertainmentHome"
-                           onclick="mainServices(event)">Cinema </a>
+                        <a href="#" class="btn btn-default" id="entertainmentHome" onclick="mainServices(event)" >Cinema </a>
                         <a href="#contact" class="btn btn-default">What else do u want ? </a>
                     </p>
 
@@ -244,8 +221,7 @@
                         <h3>What's the buzz ?</h3>
 
                         <p>
-                            We just don't want you to lose your money and share stuff with others who need it so badly
-                            than you do !!
+                            We just don't want you to lose your money and share stuff with others who need it so badly than you do !!
                         </p>
 
                     </div>
@@ -277,16 +253,12 @@
                 <div class="col-md-12">
                     <h2>What is this site all about ?</h2>
                     <p>
-                        The odds are very low that you have a ticket and you can't use it because you got other plans,
-                        but when it does
+                        The odds are very low that you have a ticket and you can't use it because you got other plans, but when it does
                         you could have gone way past the time you are allowed to cancel your tickets..
                         Life is often so unpredictable anything might happen at any time and you could be forced to take
-                        that journey you weren't planning for and guess what ? Forget Train availability, you can't even
-                        find at Redbus..
-                        Stats predict that there is definitely going to be someone else out there who wants to cancel
-                        the exact same journey you are dying to get
-                        the ticket for. Both of you would have the crisis solved only if you got a common platform to
-                        share this info and thats what we do :)
+                        that journey you weren't planning for and guess what ? Forget Train availability, you can't even find at Redbus..
+                        Stats predict that there is definitely going to be another soul out there who wants to cancel the exact same journey you are dying to get
+                        the ticket for. Both of you would have the crisis solved only if you got a common platform to share this info and thats what we do :)
                     </p>
                 </div>
 
@@ -352,7 +324,7 @@
 
     <!-- Free Section -->
 
-    <section class="for-full-back color-light " id="free-text">
+    <section class="for-full-back color-light " id="free-text" >
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-8 col-md-offset-2">
@@ -415,24 +387,23 @@
                     <h3>OUR LOCATION </h3>
                     <div>
                         <span><i class="fa fa-home"></i>&nbsp; Address: Chennai, Ramapuram</span>
-                        <br/>
+                        <br />
                         <!--                         <span><i class="fa fa-phone"></i>&nbsp;Phone: 82-230-567-899</span> -->
                         <!--                         <br /> -->
                         <span><i class="fa fa-envelope-o"></i>&nbsp;E-Mail: support@sharemyticket.in</span>
-                        <br/>
+                        <br />
                         <!--                         <span><i class="fa fa-phone"></i>&nbsp;Call: +50-987-009-0</span> -->
                         <!--                         <br /> -->
                         <span><i class="fa fa-globe"></i>&nbsp;Web: sharemyticket.in</span>
-                        <br/> <br/>
+                        <br /> <br />
                         <!--                         <button type="submit" class="btn btn-primary">Requestb Quotation</button> -->
                     </div>
 
                 </div>
                 <div class="col-md-7">
-                    <h3>Grievance ? New feature request ? Swear at us ? Wait no More</h3>
+                    <h3>Grievance ? New feature request ? Swear at us ?  Wait no More</h3>
                     <p>
-                        This website is just run by a single lonely developer who works at an IT firm which during the
-                        day drills the most out of him :P
+                        This website is just run by a single lonely developer who works at an IT firm which during the day drills the most out of him :P
                         So it might take until a day to get your questions answered.
                     </p>
 
@@ -440,14 +411,12 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="userName" required="required"
-                                           placeholder="Name">
+                                    <input type="text" class="form-control" id="userName" required="required" placeholder="Name">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="replyToEmail" required="required"
-                                           placeholder="Email address that we should reply to">
+                                    <input type="text" class="form-control" id="replyToEmail" required="required" placeholder="Email address that we should reply to">
                                 </div>
                             </div>
                         </div>
@@ -461,13 +430,10 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
-                                    <textarea name="message" id="feedBackMessage" required="required"
-                                              class="form-control" rows="3" placeholder="Message"></textarea>
+                                    <textarea name="message" id="feedBackMessage" required="required" class="form-control" rows="3" placeholder="Message"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button onclick="return submitFeedBack(feedBackMessage)" class="btn btn-default">
-                                        Submit Request
-                                    </button>
+                                    <button onclick="return submitFeedBack(feedBackMessage)" class="btn btn-default">Submit Request</button>
                                 </div>
                             </div>
                         </div>
@@ -485,22 +451,22 @@
 <!--footer Section -->
 <div class="for-full-back " id="footer">
     2016 sharemyticket.in | All Rights Reserved
-
+<!---->
 </div>
 <!--End footer Section -->
 <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- CORE JQUERY  -->
-<script type="text/javascript" src="js/lib/jquery-2.2.2.js"></script>
+<script type="text/javascript" src="js/lib/jquery-2.2.4.min.js"></script>
+<script src="js/lib/bootstrap.js" type="text/javascript"></script>
+<!--<script type="text/javascript" src="js/custom.js"></script>-->
 
 <script src="js/lib/jquery-1.10.2.js"></script>
 <!-- https://www.irctc.co.in/eticketing/javax.faces.resource/ajax-loader.gif.jsf?ln=images -->
 
 <!--  <script src="js/lib/jquery-ui.js"></script> -->
 <!-- BOOTSTRAP CORE SCRIPT   -->
-<script src="js/lib/bootstrap.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <!--     <script type="text/javascript" src="js/autobreadcrumb.js"></script> -->
-<script src="js/custom.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
 <script type="text/javascript" src="js/lib/datepicker-jquery-ui.js"></script>
@@ -508,10 +474,8 @@
 <!--     <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script> -->
 
 
-<div id="overlay"
-     style="opacity: 0.2; z-index: 99; position: fixed; width: 100%; height: 1200px; top: -47px; left: 0px; display: none; background-color: rgb(0, 0, 0);"></div>
-<div id="ajaxLoading" style="color:white;z-index: 100;position: fixed; display: none; top:230px; left:650px"><h1>Loading
-    . . .</h1></div>
+<div id="overlay" style="opacity: 0.2; z-index: 99; position: fixed; width: 100%; height: 1200px; top: -47px; left: 0px; display: none; background-color: rgb(0, 0, 0);"></div>
+<div id="ajaxLoading" style="color:white;z-index: 100;position: fixed; display: none; top:230px; left:650px"><h1>Loading . . .</h1></div>
 
 </body>
 
@@ -520,7 +484,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="a platform to share tickets">
     <meta name="author" content="sudharsan">
-    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
 
 
     <!--[if IE]>
@@ -529,13 +493,13 @@
     <title>Share your Ticket</title>
     <!--REQUIRED STYLE SHEETS-->
     <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLE CSS -->
-    <link href="css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
     <!-- CUSTOM STYLE CSS -->
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/breadcrumbs.css" rel="stylesheet"/>
-    <link href="css/datepicker-jquery-ui.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/breadcrumbs.css" rel="stylesheet" />
+    <link href="css/datepicker-jquery-ui.css" rel="stylesheet" />
 
     <!-- GOOGLE FONT -->
     <!--     <link href='http://fonts.googleapis.com/css?family=Ruluko' rel='stylesheet' type='text/css' /> TODO -->
@@ -548,4 +512,3 @@
 </head>
 
 </html>
-<!--/Users/sudharsan-2598/Documents/workspace/apache-tomcat-7.0.67/wtpwebapps/share-workspace/WEB-INF/lib/slf4j-api-1.7.7.jar-->
